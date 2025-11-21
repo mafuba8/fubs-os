@@ -111,8 +111,4 @@ done
 
 
 ### Cleanup
-# https://github.com/ublue-os/aurora/blob/main/build_files/shared/clean-stage.sh
-find /var -mindepth 1 -delete
-find /boot -mindepth 1 -delete
-mkdir -p /var /boot
-
+dnf5 clean all
