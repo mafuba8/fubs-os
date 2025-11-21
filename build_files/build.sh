@@ -86,7 +86,7 @@ copr_install_isolated "gmaglione/podman-bootc" "podman-bootc"
 copr_install_isolated "ublue-os/packages" "ublue-os-libvirt-workarounds"
 
 # Openconnect in a pre-release version
-copr_install_isolated "dwmw2/openconnect" "openconnect networkmanager-openconnect"
+copr_install_isolated "dwmw2/openconnect" "openconnect" "networkmanager-openconnect"
 
 
 ### Enable DX services.
