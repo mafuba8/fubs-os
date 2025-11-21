@@ -3,7 +3,10 @@
 set -ouex pipefail
 
 # Load COPR helpers.
-source /ctx/copr-helpers.sh
+source /ctx/build_files/copr-helpers.sh
+
+# Copy system files (like systemd-services)
+rsync -rvK /ctx/system_files/ /
 
 
 ### Install packages from Fedora repos
@@ -25,8 +28,6 @@ FEDORA_PACKAGES=(
     dbus-x11
     edk2-ovmf
     flatpak-builder
-    incus
-    incus-agent
     iotop
     libvirt
     libvirt-nss
