@@ -6,7 +6,7 @@ set -ouex pipefail
 source /ctx/build_files/copr-helpers.sh
 
 # Install kvmkr (experimental).
-source /ctx/build_files/vfio.sh
+#source /ctx/build_files/vfio.sh
 
 # Copy system files (like systemd-services)
 rsync -rvK /ctx/system_files/ /
