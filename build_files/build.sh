@@ -87,8 +87,9 @@ copr_install_isolated "gmaglione/podman-bootc" "podman-bootc"
 copr_install_isolated "ublue-os/packages" "ublue-os-libvirt-workarounds"
 
 # Openconnect in a pre-release version
-copr_install_isolated "dwmw2/openconnect" "openconnect"
-copr_install_isolated "dwmw2/openconnect" "NetworkManager-openconnect"
+dnf5 -y copr enable "dwmw2/openconnect"
+dnf5 -y install "openconnect" "NetworkManager-openconnect"
+dnf5 -y copr disable "dwmw2/openconnect" 
 
 
 ### Enable DX services.
@@ -107,4 +108,11 @@ sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/_copr_ublue-os-akmods.repo
 for i in /etc/yum.repos.d/rpmfusion-*; do
     sed -i 's@enabled=1@enabled=0@g' "$i"
 done
+
+
+### Cleanup
+# https://github.com/ublue-os/aurora/blob/main/build_files/shared/clean-stage.sh
+find /var -mindepth 1 -delete
+find /boot -mindepth 1 -delete
+mkdir -p /var /boot
 
