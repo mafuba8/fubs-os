@@ -1,9 +1,9 @@
 [Unit]
-Description=Add wheel members to libvirt and incus-admin groups
+Description=Add wheel members to additional groups
 
 [Service]
 Type=oneshot
-ExecStart=/usr/libexec/aurora-dx-groups
+ExecStart=/usr/libexec/fubs-os-groups
 Restart=on-failure
 RestartSec=30
 StartLimitInterval=0

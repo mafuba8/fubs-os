@@ -2,7 +2,7 @@
 
 # SCRIPT VERSION
 GROUP_SETUP_VER=2
-GROUP_SETUP_VER_FILE="/etc/ublue/dx-groups"
+GROUP_SETUP_VER_FILE="/etc/ublue/fubs-os-groups"
 GROUP_SETUP_VER_RAN=$(cat "$GROUP_SETUP_VER_FILE")
 
 # make the directory if it doesn't exist
@@ -24,12 +24,10 @@ append_group() {
 }
 
 # Setup Groups
-append_group incus-admin
 append_group libvirt
 
 wheelarray=($(getent group wheel | cut -d ":" -f 4 | tr ',' '\n'))
 for user in $wheelarray; do
-  usermod -aG incus-admin $user
   usermod -aG libvirt $user
 done
 
