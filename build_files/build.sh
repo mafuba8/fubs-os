@@ -87,7 +87,7 @@ copr_install_isolated "ublue-os/packages" "ublue-os-libvirt-workarounds"
 
 # Openconnect in a pre-release version
 copr_install_isolated "dwmw2/openconnect" "openconnect"
-copr_install_isolated "dwmw2/openconnect" "networkmanager-openconnect"
+copr_install_isolated "dwmw2/openconnect" "NetworkManager-openconnect"
 
 
 ### Enable DX services.
