@@ -3,7 +3,7 @@
 set -ouex pipefail
 
 # Load COPR helpers.
-source /ctx/build_files/copr-helpers.sh
+source /ctx/copr-helpers.sh
 
 
 ### Install packages from Fedora repos
