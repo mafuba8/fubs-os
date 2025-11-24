@@ -91,7 +91,7 @@ copr_install_isolated "ublue-os/packages" "ublue-os-libvirt-workarounds"
 
 # Openconnect in a pre-release version
 dnf5 -y copr enable "dwmw2/openconnect"
-dnf5 -y install "openconnect" "NetworkManager-openconnect"
+dnf5 -y upgrade "openconnect" "NetworkManager-openconnect"
 dnf5 -y copr disable "dwmw2/openconnect" 
 
 
