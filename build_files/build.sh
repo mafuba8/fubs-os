@@ -99,7 +99,7 @@ dnf5 -y copr disable "dwmw2/openconnect"
 systemctl enable podman.socket
 systemctl enable swtpm-workaround.service
 systemctl enable ublue-os-libvirt-workarounds.service
-systemctl enable aurora-dx-groups.service
+systemctl enable fubs-os-groups
 
 # NOTE: With isolated COPR installation, most repos are never enabled globally.
 # We only need to clean up repos that were enabled during the build process.
