@@ -95,6 +95,13 @@ dnf5 -y upgrade "openconnect" "NetworkManager-openconnect"
 dnf5 -y copr disable "dwmw2/openconnect" 
 
 
+### Install Canon printer drivers.
+wget --output-document /tmp/cque-en-4.0-14.x86_64.rpm \
+	https://files.canon-europe.com/files/soft45517/Software/cque-en-4.0-14.x86_64.rpm
+dnf5 -y install /tmp/cque-en-4.0-14.x86_64.rpm
+rm /tmp/cque-en-4.0-14.x86_64.rpm
+
+
 ### Enable DX services.
 systemctl enable podman.socket
 systemctl enable swtpm-workaround.service
