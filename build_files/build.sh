@@ -96,6 +96,7 @@ dnf5 -y copr disable "dwmw2/openconnect"
 
 
 ### Install Canon printer drivers.
+echo "Installing Canon CQue drivers..."
 wget --output-document /tmp/cque-en-4.0-14.x86_64.tar.gz \
         https://files.canon-europe.com/files/soft01-48570/Driver/cque-en-4.0-14.x86_64.tar.gz
 mkdir /tmp/cque
