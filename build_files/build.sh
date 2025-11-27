@@ -96,10 +96,13 @@ dnf5 -y copr disable "dwmw2/openconnect"
 
 
 ### Install Canon printer drivers.
-wget --output-document /tmp/cque-en-4.0-14.x86_64.rpm \
-	https://files.canon-europe.com/files/soft45517/Software/cque-en-4.0-14.x86_64.rpm
-rpm --install --nodigest --nofiledigest /tmp/cque-en-4.0-14.x86_64.rpm
-rm /tmp/cque-en-4.0-14.x86_64.rpm
+wget --output-document /tmp/cque-en-4.0-14.x86_64.tar.gz \
+        https://files.canon-europe.com/files/soft01-48570/Driver/cque-en-4.0-14.x86_64.tar.gz
+mkdir /tmp/cque
+tar xzf /tmp/cque-en-4.0-14.x86_64.tar.gz --directory /tmp/cque
+/tmp/cque/cque-en-4.0-14/setup
+rm /tmp/cque-en-4.0-14.x86_64.tar.gz
+rm -r /tmp/cque
 
 
 ### Enable DX services.
