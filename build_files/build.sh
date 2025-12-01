@@ -2,108 +2,19 @@
 
 set -ouex pipefail
 
-# Load COPR helpers.
-source /ctx/build_files/copr-helpers.sh
-
 # Install kvmkr (experimental).
-#source /ctx/build_files/vfio.sh
+# /ctx/build_files/vfio.sh
 
-# Copy system files (like systemd-services)
+### Copy system files (like systemd-services)
 rsync -rvK /ctx/system_files/ /
 
 
 ### Install packages from Fedora repos
-
-# List taken from the DX setup, with some packages removed.
-# https://github.com/ublue-os/aurora/blob/main/build_files/dx/00-dx.sh
-FEDORA_PACKAGES=(
-    bcc
-    bpftop
-    bpftrace
-    cockpit-bridge
-    cockpit-machines
-    cockpit-networkmanager
-    cockpit-ostree
-    cockpit-podman
-    cockpit-selinux
-    cockpit-storaged
-    cockpit-system
-    dbus-x11
-    edk2-ovmf
-    flatpak-builder
-    iotop
-    libvirt
-    libvirt-nss
-    nicstat
-    numactl
-    osbuild-selinux
-    p7zip
-    p7zip-plugins
-    podman-compose
-    podman-machine
-    podman-tui
-    qemu
-    qemu-char-spice
-    qemu-device-display-virtio-gpu
-    qemu-device-display-virtio-vga
-    qemu-device-usb-redirect
-    qemu-img
-    qemu-system-x86-core
-    qemu-user-binfmt
-    qemu-user-static
-    rocm-hip
-    rocm-opencl
-    rocm-smi
-    sysprof
-    tmux
-    trace-cmd
-    udica
-    virt-manager
-    virt-v2v
-    virt-viewer
-    ydotool
-)
-
-echo "Installing ${#FEDORA_PACKAGES[@]} packages from Fedora repos..."
-dnf5 -y install "${FEDORA_PACKAGES[@]}"
-
-
-### Install packages from COPR.
-# Use a COPR Example:
-#
-# dnf5 -y copr enable ublue-os/staging
-# dnf5 -y install package
-# Disable COPRs so they don't end up enabled on the final image:
-# dnf5 -y copr disable ublue-os/staging
-echo "Installing COPR packages with isolated repo enablement..."
-
-# Management tool for virtualization and kubernetes platforms
-# https://github.com/karmab/kcli
-copr_install_isolated "karmab/kcli" "kcli"
-
-# Podman-bootc
-# https://github.com/bootc-dev/podman-bootc
-copr_install_isolated "gmaglione/podman-bootc" "podman-bootc"
-
-# Ublue libvirt workarounds
-# https://github.com/ublue-os/packages
-copr_install_isolated "ublue-os/packages" "ublue-os-libvirt-workarounds"
-
-# Openconnect in a pre-release version
-dnf5 -y copr enable "dwmw2/openconnect"
-dnf5 -y upgrade "openconnect" "NetworkManager-openconnect"
-dnf5 -y copr disable "dwmw2/openconnect" 
+/ctx/build_files/packages.sh
 
 
 ### Install Canon printer drivers.
-echo "Installing Canon CQue drivers..."
-wget --output-document /tmp/cque-en-4.0-14.x86_64.tar.gz \
-        https://files.canon-europe.com/files/soft01-48570/Driver/cque-en-4.0-14.x86_64.tar.gz
-mkdir /tmp/cque
-tar xzf /tmp/cque-en-4.0-14.x86_64.tar.gz --directory /tmp/cque
-/tmp/cque/cque-en-4.0-14/setup
-rm /tmp/cque-en-4.0-14.x86_64.tar.gz
-rm -r /tmp/cque
+/ctx/build_files/printer-driver.sh
 
 
 ### Enable DX services.
