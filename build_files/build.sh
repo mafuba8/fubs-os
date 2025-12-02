@@ -14,7 +14,7 @@ rsync -rvK /ctx/system_files/ /
 
 
 ### Install Canon printer drivers.
-/ctx/build_files/printer-driver.sh
+#/ctx/build_files/printer-driver.sh
 
 
 ### Enable DX services.

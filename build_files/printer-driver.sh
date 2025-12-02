@@ -11,4 +11,3 @@ tar xzf /tmp/cque-en-4.0-14.x86_64.tar.gz --directory /tmp/cque
 /tmp/cque/cque-en-4.0-14/setup
 rm /tmp/cque-en-4.0-14.x86_64.tar.gz
 rm -r /tmp/cque
-
