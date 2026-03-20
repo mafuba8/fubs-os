@@ -45,6 +45,7 @@ FEDORA_PACKAGES=(
     rocm-opencl
     rocm-smi
     sysprof
+    texlive
     tmux
     trace-cmd
     udica
