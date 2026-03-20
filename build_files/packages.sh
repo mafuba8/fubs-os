@@ -58,6 +58,10 @@ echo "Installing ${#FEDORA_PACKAGES[@]} packages from Fedora repos..."
 dnf5 -y install "${FEDORA_PACKAGES[@]}"
 
 
+# Allow VSCodium in the Bazaar store.
+sed -i '/^.com.vscodium.codium.*/d' /etc/bazaar/blocklist.yaml
+
+
 ### Install packages from COPR.
 # Use a COPR Example:
 #
